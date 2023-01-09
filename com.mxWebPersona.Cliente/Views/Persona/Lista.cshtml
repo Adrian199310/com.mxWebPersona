@@ -1,0 +1,70 @@
+﻿
+@model List<Persona>
+
+@{
+    ViewData["Title"] = "Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Lista</h1>
+
+<p>
+    <a asp-action="Crear" class="btn btn-success"><i class="bi bi-plus-circle"></i>Crear Nuevo</a>
+</p>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">
+                Nombre     @* @Html.DisplayNameFor(model => model.nombre)*@
+            </th>
+            <th scope="col">
+                Apellido Paterno
+            </th>
+            <th scope="col">
+                Apellido Materno
+            </th>
+            <th scope="col">
+                Telefono
+                
+            </th>
+            <th scope="col">
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td class="d-none d-lg-block">
+                @Html.DisplayFor(modelItem => item.idPersona)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoPaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                        <a asp-action="Editar" class="btn btn-primary btn-sm" asp-route-idPersona="@item.idPersona"><i class="bi bi-pencil-square"></i>Editar</a> |
+                        <a asp-action="Eliminar" class="btn btn-danger btn-sm" asp-route-idPersona="@item.idPersona"><i class="bi bi-trash-fill"></i>Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+@section Scripts{
+    
+}
